@@ -1,0 +1,19 @@
+# general
+title: London Accidents
+author: Sergiu Tripon
+description: ""
+timezone: Europe/London
+
+# urls
+url: "http://sergiu-tripon.com"
+baseurl: "/london-accidents"
+
+# build
+permalink: /:year/:month/:day/:title/
+
+# exclude
+exclude:
+- node_modules
+- Gruntfile.js
+- package.json
+- README.md
