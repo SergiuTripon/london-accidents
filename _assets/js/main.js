@@ -42,10 +42,10 @@ function add_copyright() {
     var copyright_content = document.createElement('div');
     copyright_content.id = "copyright-content";
     copyright_content.innerHTML =
-        "Copyright &copy; 2016 " +
-        "<a href='http://sergiu-tripon.com/' target='_blank'>Sergiu Tripon</a>. " +
-        "Code licensed under " +
-        "<a href='" + license_path + "' target='_blank'>MIT License</a>."
+        "<span>Copyright &copy; 2016 " +
+        "<a href='http://sergiu-tripon.com/' target='_blank'>Sergiu Tripon</a></span>" +
+        "<span class='hidden-xs'>. Code licensed under " +
+        "<a href='" + license_path + "' target='_blank'>MIT License</a>.</span>"
     ;
     copyright.appendChild(copyright_content);
 
