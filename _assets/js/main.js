@@ -4,6 +4,7 @@ var map;
 var zoom = 10;
 var london = {lat: 51.5286416, lng: -0.1015987};
 var data_formatted = [];
+var current_year = new Date().getFullYear();
 var stats = [];
 var markers = [];
 var oms;
@@ -42,8 +43,8 @@ function add_copyright() {
     var copyright_content = document.createElement('div');
     copyright_content.id = "copyright-content";
     copyright_content.innerHTML =
-        "<span>Copyright &copy; 2016 " +
-        "<a href='http://sergiu-tripon.com/' target='_blank'>Sergiu Tripon</a></span>" +
+        "<span>Copyright &copy; " + current_year +
+        "<a href='http://sergiu-tripon.com/' target='_blank'> Sergiu Tripon</a></span>" +
         "<span class='hidden-xs'>. Code licensed under " +
         "<a href='" + license_path + "' target='_blank'>MIT License</a>.</span>"
     ;
@@ -80,7 +81,7 @@ function add_year_control(year_to_remove) {
         "<div class='col-lg-12'>" +
         "<ul id='select-year' class='list-inline'>"
     ;
-    for (var year = 2005; year <= new Date().getFullYear() - 1; year++) {
+    for (var year = 2006; year <= current_year - 1; year++) {
         modal_content_year +=
             "<li id='" + year + "'>" +
             "<button type='button' class='btn btn-light'>" + year + "</button>" +
@@ -562,6 +563,9 @@ function get_data(year) {
             map.setCenter(london);
             map.setZoom(zoom);
         });
+    })
+    .fail(function() {
+        get_data((parseInt(year) + 1).toString());
     });
 }
 
