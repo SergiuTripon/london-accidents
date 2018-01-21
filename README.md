@@ -6,7 +6,7 @@
 
 ## London Accidents (2005-2015) by Sergiu Tripon
 
-**Demo**: [http://sergiu-tripon.com/london-accidents/](http://sergiu-tripon.com/london-accidents/)
+**Link**: [http://sergiu-tripon.com/london-accidents/](http://sergiu-tripon.com/london-accidents/)
 
 ### Screenshots
 

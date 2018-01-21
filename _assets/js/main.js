@@ -61,19 +61,19 @@ function add_year_control(year_to_remove) {
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(control_year[0]);
 
     var modal_year = $("#modal-year");
-    var modal_content_year = "<div class='modal-dialog modal-md' role='document'>";
+    var modal_content_year = "<div class='modal-dialog modal-lg' role='document'>";
     modal_content_year +=
         "<div class='modal-content'>" +
         "<div class='modal-header' style='background-color: #EC7063'>" +
-        "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
-        "<span class='fa fa-times' aria-hidden='true'></span>" +
-        "</button>" +
         "<div class='container-fluid'>" +
         "<div class='row'>" +
         "<div class='col-lg-12'>" +
         "</div>" +
         "</div>" +
         "</div>" +
+        "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
+        "<span class='fa fa-times' aria-hidden='true'></span>" +
+        "</button>" +
         "</div>" +
         "<div class='modal-body' style='background-color: #45B39D'>" +
         "<div class='container-fluid'>" +
@@ -83,7 +83,7 @@ function add_year_control(year_to_remove) {
     ;
     for (var year = 2006; year <= current_year - 1; year++) {
         modal_content_year +=
-            "<li id='" + year + "'>" +
+            "<li class='list-inline-item' id='" + year + "'>" +
             "<button type='button' class='btn btn-light'>" + year + "</button>" +
             "</li>"
         ;
@@ -125,8 +125,8 @@ function get_iw_content(year) {
     var iw_content;
     $.each(data_formatted, function(key, val) {
         iw_content =
-            "<h5>Accident - " + year + "</h5>" +
-            "<div>" +
+            "<h6 class='mt-3 mb-3'>Accident - " + year + "</h6>" +
+            "<div class='pr-4'>" +
             "<b>Severity</b>: " + val.severity + "<br>" +
             "<b>Borough</b>: " + val.borough + "<br>" +
             "<b>Latitude</b>: " + val.lat + "<br>" +
@@ -138,11 +138,11 @@ function get_iw_content(year) {
             "<hr>"
         ;
         if (val.casualties.length > 1) {
-            iw_content += "<h5>Casualties</h5>";
+            iw_content += "<h6 class='mt-1 mb-3'>Casualties</h6>";
             $.each(val.casualties, function(key, val) {
                 iw_content +=
-                    "<div>" +
-                    "<h5>Casualty " + (key + 1) + "</h5>" +
+                    "<div class='pr-4'>" +
+                    "<h6 class='mt-2 mb-1'>Casualty " + (key + 1) + "</h6>" +
                     "<b>Age</b>: " + val.age + "<br>" +
                     "<b>Class</b>: " + val.class + "<br>" +
                     "<b>Severity</b>: " + val.severity + "<br>" +
@@ -153,8 +153,8 @@ function get_iw_content(year) {
             });
         } else {
             iw_content +=
-                "<h5>Casualty</h5>" +
-                "<div>" +
+                "<h6 class='mb-3'>Casualty</h6>" +
+                "<div class='pr-4'>" +
                 "<b>Age</b>: " + val.casualties[0].age + "<br>" +
                 "<b>Class</b>: " + val.casualties[0].class + "<br>" +
                 "<b>Severity</b>: " + val.casualties[0].severity + "<br>" +
@@ -165,19 +165,19 @@ function get_iw_content(year) {
         }
         iw_content += "<hr>";
         if (val.vehicles.length > 1) {
-            iw_content += "<h5>Vehicles</h5>";
+            iw_content += "<h6 class='mt-1 mb-3'>Vehicles</h6>";
             $.each(val.vehicles, function(key, val) {
                 iw_content +=
-                    "<div>" +
-                    "<h5>Vehicle " + (key + 1) + "</h5>" +
+                    "<div class='pr-4'>" +
+                    "<h6 class='mt-2 mb-1'>Vehicle " + (key + 1) + "</h6>" +
                     "<b>Type</b>: " + val.type + "<br>" +
                     "</div>"
                 ;
             });
         } else {
             iw_content +=
-                "<h5>Vehicle</h5>" +
-                "<div>" +
+                "<h6 class='mb-3'>Vehicle</h6>" +
+                "<div class='pr-4'>" +
                 "<b>Type</b>: " + val.vehicles[0].type + "<br>" +
                 "</div>"
             ;
@@ -311,16 +311,16 @@ function add_stats_control(year) {
     modal_content_stats +=
         "<div class='modal-content'>" +
         "<div class='modal-header' style='background-color: #EC7063'>" +
-        "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
-        "<span class='fa fa-times' aria-hidden='true'></span>" +
-        "</button>" +
         "<div class='container-fluid'>" +
         "<div class='row'>" +
         "<div class='col-lg-12'>" +
-        "<h1>- London Accidents -<br>" + year + " Statistics</h1>" +
+        "<h2>- London Accidents -<br>" + year + " Statistics</h2>" +
         "</div>" +
         "</div>" +
         "</div>" +
+        "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
+        "<span class='fa fa-times' aria-hidden='true'></span>" +
+        "</button>" +
         "</div>"
     ;
     modal_content_stats +=
@@ -331,24 +331,26 @@ function add_stats_control(year) {
     ;
     modal_content_stats +=
         "<div class='col-lg-12'>" +
-        "<h2>Overall</h2>" +
+        "<h3 class='mt-3'>Overall</h3>" +
         "</div>" +
+        "<div class='row'>" +
         "<div class='col-sm-4 col-md-4 col-lg-4'>" +
         "<div class='item-stats'>" +
-        "<h4>Accidents</h4>" +
-        "<h4>" + stats[0].accidents.total.toLocaleString()  + "</h4>" +
-        "</div>" +
-        "</div>" +
-        "<div class='col-sm-4 col-md-4 col-lg-4'>" +
-        "<div class='item-stats'>" +
-        "<h4>Casualties</h4>" +
-        "<h4>" + stats[0].casualties.total.toLocaleString() + "</h4>" +
+        "<h5>Accidents</h5>" +
+        "<h5>" + stats[0].accidents.total.toLocaleString()  + "</h5>" +
         "</div>" +
         "</div>" +
         "<div class='col-sm-4 col-md-4 col-lg-4'>" +
         "<div class='item-stats'>" +
-        "<h4>Vehicles</h4>" +
-        "<h4>" + stats[0].vehicles.total.toLocaleString() + "</h4>" +
+        "<h5>Casualties</h5>" +
+        "<h5>" + stats[0].casualties.total.toLocaleString() + "</h5>" +
+        "</div>" +
+        "</div>" +
+        "<div class='col-sm-4 col-md-4 col-lg-4'>" +
+        "<div class='item-stats'>" +
+        "<h5>Vehicles</h5>" +
+        "<h5>" + stats[0].vehicles.total.toLocaleString() + "</h5>" +
+        "</div>" +
         "</div>" +
         "</div>" +
         "</div>" +
@@ -362,38 +364,36 @@ function add_stats_control(year) {
         "<div class='container-fluid'>" +
         "<div class='row'>" +
         "<div class='col-lg-12'>" +
-        "<div class='col-lg-12'>" +
-        "<h2>Accidents</h2>" +
-        "<h3>Severity</h3>" +
+        "<h3 class='mt-3'>Accidents</h3>" +
+        "<h4 class='mt-4 mb-3'>Severity</h4>" +
         "</div>"
     ;
     $.each(stats[0].accidents.severities, function(severity, number) {
         modal_content_stats +=
             "<div class='col-sm-4 col-md-4 col-lg-4'>" +
             "<div class='item-stats'>" +
-            "<h4>" + severity + "</h4>" +
-            "<h4>" + number.toLocaleString() + "</h4>" +
+            "<h5>" + severity + "</h5>" +
+            "<h5>" + number.toLocaleString() + "</h5>" +
             "</div>" +
             "</div>"
         ;
     });
     modal_content_stats +=
         "<div class='col-lg-12'>" +
-        "<h3>Borough</h3>" +
+        "<h4 class='mt-4 mb-3'>Borough</h4>" +
         "</div>"
     ;
     $.each(stats[0].accidents.boroughs, function(borough, number) {
         modal_content_stats +=
             "<div class='col-sm-4 col-md-4 col-lg-4'>" +
             "<div class='item-stats'>" +
-            "<h4>" + borough + "</h4>" +
-            "<h4>" + number.toLocaleString() + "</h4>" +
+            "<h5>" + borough + "</h5>" +
+            "<h5>" + number.toLocaleString() + "</h5>" +
             "</div>" +
             "</div>"
         ;
     });
     modal_content_stats +=
-        "</div>" +
         "</div>" +
         "</div>" +
         "</div>" +
@@ -404,79 +404,79 @@ function add_stats_control(year) {
         "<div class='container-fluid'>" +
         "<div class='row'>" +
         "<div class='col-lg-12'>" +
-        "<h2>Casualties</h2>" +
-        "<h3>Age</h3>" +
+        "<h3 class='mt-3'>Casualties</h3>" +
+        "<h4 class='mt-4 mb-3'>Age</h4>" +
         "</div>" +
         "<div class='col-sm-4 col-md-4 col-lg-4'>" +
         "<div class='item-stats'>" +
-        "<h4>0-14</h4>" +
-        "<h4>" + stats[0].casualties.ages.age1.toLocaleString() + "</h4>" +
-        "</div>" +
-        "</div>" +
-        "<div class='col-sm-4 col-md-4 col-lg-4'>" +
-        "<div class='item-stats'>" +
-        "<h4>15-24</h4>" +
-        "<h4>" + stats[0].casualties.ages.age2.toLocaleString() + "</h4>" +
+        "<h5>0-14</h5>" +
+        "<h5>" + stats[0].casualties.ages.age1.toLocaleString() + "</h5>" +
         "</div>" +
         "</div>" +
         "<div class='col-sm-4 col-md-4 col-lg-4'>" +
         "<div class='item-stats'>" +
-        "<h4>25-54</h4>" +
-        "<h4>" + stats[0].casualties.ages.age3.toLocaleString() + "</h4>" +
+        "<h5>15-24</h5>" +
+        "<h5>" + stats[0].casualties.ages.age2.toLocaleString() + "</h5>" +
         "</div>" +
         "</div>" +
         "<div class='col-sm-4 col-md-4 col-lg-4'>" +
         "<div class='item-stats'>" +
-        "<h4>55-64</h4>" +
-        "<h4>" + stats[0].casualties.ages.age4.toLocaleString() + "</h4>" +
+        "<h5>25-54</h5>" +
+        "<h5>" + stats[0].casualties.ages.age3.toLocaleString() + "</h5>" +
         "</div>" +
         "</div>" +
         "<div class='col-sm-4 col-md-4 col-lg-4'>" +
         "<div class='item-stats'>" +
-        "<h4>65+</h4>" +
-        "<h4>" + stats[0].casualties.ages.age5.toLocaleString() + "</h4>" +
+        "<h5>55-64</h5>" +
+        "<h5>" + stats[0].casualties.ages.age4.toLocaleString() + "</h5>" +
+        "</div>" +
+        "</div>" +
+        "<div class='col-sm-4 col-md-4 col-lg-4'>" +
+        "<div class='item-stats'>" +
+        "<h5>65+</h5>" +
+        "<h5>" + stats[0].casualties.ages.age5.toLocaleString() + "</h5>" +
         "</div>" +
         "</div>" +
         "<div class='col-lg-12'>" +
-        "<h3>Age Band</h3>" +
+        "<h4 class='mt-4 mb-3'>Age Band</h4>" +
         "</div>"
     ;
     $.each(stats[0].casualties.ageBands, function(age_band, number) {
         modal_content_stats +=
             "<div class='col-sm-4 col-md-4 col-lg-4'>" +
             "<div class='item-stats'>" +
-            "<h4>" + age_band + "</h4>" +
-            "<h4>" + number.toLocaleString() + "</h4>" +
+            "<h5>" + age_band + "</h5>" +
+            "<h5>" + number.toLocaleString() + "</h5>" +
             "</div>" +
             "</div>"
         ;
     });
     modal_content_stats +=
         "<div class='col-lg-12'>" +
-        "<h3>Class</h3>" +
+        "<h4 class='mt-4 mb-3'>Class</h4>" +
         "</div>"
     ;
     $.each(stats[0].casualties.classes, function(tfl_class, number) {
         modal_content_stats +=
             "<div class='col-sm-4 col-md-4 col-lg-4'>" +
             "<div class='item-stats'>" +
-            "<h4>" + tfl_class + "</h4>" +
-            "<h4>" + number.toLocaleString() + "</h4>" +
+            "<h5>" + tfl_class + "</h5>" +
+            "<h5>" + number.toLocaleString() + "</h5>" +
             "</div>" +
             "</div>"
         ;
     });
     modal_content_stats +=
         "<div class='col-lg-12'>" +
-        "<h3>Mode</h3>" +
+        "<h4>Mode</h4>" +
         "</div>"
     ;
     $.each(stats[0].casualties.modes, function(mode, number) {
         modal_content_stats +=
             "<div class='col-sm-6 col-md-4 col-lg-4'>" +
             "<div class='item-stats'>" +
-            "<h4>" + mode.split(/(?=[A-Z])/).join(" ") + "</h4>" +
-            "<h4>" + number.toLocaleString() + "</h4>" +
+            "<h5>" + mode.split(/(?=[A-Z])/).join(" ") + "</h5>" +
+            "<h5>" + number.toLocaleString() + "</h5>" +
             "</div>" +
             "</div>"
         ;
@@ -492,23 +492,21 @@ function add_stats_control(year) {
         "<div class='container-fluid'>" +
         "<div class='row'>" +
         "<div class='col-lg-12'>" +
-        "<div class='col-lg-12'>" +
-        "<h2>Vehicles</h2>" +
-        "<h3>Type</h3>" +
+        "<h3 class='mt-3'>Vehicles</h3>" +
+        "<h4 class='mt-4 mb-3'>Type</h4>" +
         "</div>"
     ;
     $.each(stats[0].vehicles.types, function(type, number) {
         modal_content_stats +=
             "<div class='col-sm-6 col-md-4 col-lg-4'>" +
             "<div class='item-stats'>" +
-            "<h4>" + type.split(/(?=[A-Z])/).join(" ") + "</h4>" +
-            "<h4>" + number.toLocaleString() + "</h4>" +
+            "<h5>" + type.split(/(?=[A-Z])/).join(" ") + "</h5>" +
+            "<h5>" + number.toLocaleString() + "</h5>" +
             "</div>" +
             "</div>"
         ;
     });
     modal_content_stats +=
-        "</div>" +
         "</div>" +
         "</div>" +
         "</div>"
@@ -565,7 +563,12 @@ function get_data(year) {
         });
     })
     .fail(function() {
-        get_data((parseInt(year) + 1).toString());
+        var year_int = parseInt(year);
+        if (((year_int + 1) === current_year)) {
+            get_data((year_int - 1).toString());
+        } else {
+            get_data((year_int + 1).toString());
+        }
     });
 }
 

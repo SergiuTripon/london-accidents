@@ -8,9 +8,6 @@ timezone: Europe/London
 url: "http://sergiu-tripon.com"
 baseurl: "/london-accidents"
 
-# build
-permalink: /:year/:month/:day/:title/
-
 # exclude
 exclude:
 - node_modules

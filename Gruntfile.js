@@ -21,7 +21,7 @@ module.exports = function(grunt) {
         postcss: {
             options: {
                 processors: [
-                    require('autoprefixer-core'),
+                    require('autoprefixer'),
                     require('csswring')
                 ]
             },
@@ -145,6 +145,9 @@ module.exports = function(grunt) {
         },
         // watch
         watch: {
+            options: {
+                livereload: true
+            },
             css: {
                 files: ['_assets/sass/*.scss'],
                 tasks: ['sass', 'postcss', 'copy:mincss']
@@ -162,9 +165,9 @@ module.exports = function(grunt) {
         connect: {
             server: {
                 options: {
-                    livereload: true,
+                    port: 4000,
                     base: '_site/',
-                    port: 4000
+                    livereload: true
                 }
             }
         }
