@@ -65,11 +65,7 @@ function add_year_control(year_to_remove) {
     modal_content_year +=
         "<div class='modal-content'>" +
         "<div class='modal-header' style='background-color: #EC7063'>" +
-        "<div class='container-fluid'>" +
-        "<div class='row'>" +
-        "<div class='col-lg-12'>" +
-        "</div>" +
-        "</div>" +
+        "<div class='col-lg-10 offset-lg-1'>" +
         "</div>" +
         "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
         "<span class='fa fa-times' aria-hidden='true'></span>" +
@@ -311,12 +307,8 @@ function add_stats_control(year) {
     modal_content_stats +=
         "<div class='modal-content'>" +
         "<div class='modal-header' style='background-color: #EC7063'>" +
-        "<div class='container-fluid'>" +
-        "<div class='row'>" +
-        "<div class='col-lg-12'>" +
-        "<h2>- London Accidents -<br>" + year + " Statistics</h2>" +
-        "</div>" +
-        "</div>" +
+        "<div class='col-lg-10 offset-lg-1'>" +
+        "<h2 class='mt-4'>- London Accidents -<br>" + year + " Statistics</h2>" +
         "</div>" +
         "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
         "<span class='fa fa-times' aria-hidden='true'></span>" +
